@@ -19,6 +19,12 @@ const Navbar: React.FC = () => {
               首页
             </Link>
             <Link
+              to="/about"
+              className="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              关于我们
+            </Link>
+            <Link
               to="/booking"
               className="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-md text-sm font-medium transition-colors"
             >
