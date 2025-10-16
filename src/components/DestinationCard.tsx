@@ -9,12 +9,20 @@ interface DestinationCardProps {
 const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
   const navigate = useNavigate();
 
-  const handleBookNow = () => {
+  const handleCardClick = () => {
+    navigate(`/detail/${destination.id}`);
+  };
+
+  const handleBookNow = (e: React.MouseEvent) => {
+    e.stopPropagation();
     navigate(`/booking?destination=${destination.id}`);
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <div 
+      onClick={handleCardClick}
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+    >
       <img
         src={destination.image}
         alt={destination.name}
@@ -37,7 +45,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
         <div className="flex justify-between items-center">
           <span className="text-2xl font-bold text-green-600">¥{destination.price}</span>
           <button
-            onClick={handleBookNow}
+            onClick={(e) => handleBookNow(e)}
             className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
           >
             立即预定
